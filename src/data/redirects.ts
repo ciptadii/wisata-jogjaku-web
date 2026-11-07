@@ -1,0 +1,18 @@
+export const redirects: Record<string, string> = {
+  '/lp-under-cons/': '/',
+  '/index.php/home/': '/',
+  '/paket-wisata-1-a/': '/paket-wisata/a-01/',
+  '/paket-wisata-1b/': '/paket-wisata/a-02/',
+  '/paket-wisata-1c/': '/paket-wisata/a-03/',
+  '/paket-wisata-1d/': '/paket-wisata/a-04/',
+  '/paket-wisata-1e/': '/paket-wisata/a-05/',
+  '/paket-wisata-1f/': '/paket-wisata/a-06/',
+  '/paket-wisata-1g/': '/paket-wisata/a-07/',
+  '/paket-wisata-1h/': '/paket-wisata/a-08/',
+  '/paket-wisata-1i/': '/paket-wisata/a-09/',
+  '/paket-wisata-2a/': '/paket-wisata/b-01/',
+  '/paket-wisata-2b/': '/paket-wisata/b-02/',
+  '/paket-wisata-2c/': '/paket-wisata/b-03/',
+  '/paket-wisata-3a/': '/paket-wisata/c-01/',
+  '/paket-wisata-3b/': '/paket-wisata/c-02/',
+}

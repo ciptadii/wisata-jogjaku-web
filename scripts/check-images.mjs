@@ -1,0 +1,13 @@
+import {readdirSync,statSync} from 'fs'; import {join} from 'path';
+const expected = [];
+const brand=['logo-primary','logo-secondary']; brand.forEach(n=>[512,1024].forEach(s=>expected.push('brand/'+n+'-'+s+'.webp')));
+const photo=['jogja-landscape','destination-01','destination-02','destination-03',...Array.from({length:16},(_,i)=>'journey-'+String(i+1).padStart(2,'0'))]; photo.forEach(n=>[768,1280,1920].forEach(s=>expected.push('photography/'+n+'-'+s+'.webp')));
+const pkg=['a-01','a-02','a-03','a-04','a-05','a-06','a-07','a-08','a-09','b-01','b-02','b-03','c-01','c-02','one-day','two-day','three-day']; pkg.forEach(n=>[640,1024].forEach(s=>expected.push('packages/'+n+'-'+s+'.webp')));
+const veh=['calya','avanza-facelift','all-new-avanza','innova-reborn','hiace-commuter','hiace-premio','elf-giga','fortuner','alphard']; veh.forEach(n=>[480,900].forEach(s=>expected.push('vehicles/'+n+'-'+s+'.webp')));
+const root='public/images';
+const found=[];
+(function walk(d){for(const e of readdirSync(d,{withFileTypes:true})){const p=join(d,e.name); if(e.isDirectory()) walk(p); else found.push({rel:p.replace(/\\/g,'/').replace(root+'/',''),size:statSync(p).size});}})(root);
+const foundSet=new Set(found.map(f=>f.rel));
+const missing=expected.filter(e=>!foundSet.has(e));
+const small=found.filter(f=>f.size<500);
+console.log(JSON.stringify({expected:expected.length,found:found.length,missing,small:small.map(f=>f.rel+':'+f.size)},null,2));
