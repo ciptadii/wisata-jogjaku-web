@@ -6,26 +6,57 @@ import type { TourPackage } from '../../types'
 import { formatIDR } from '../../utils/format'
 import { ButtonLink } from '../ui/Button'
 
-export function PackageCard({ pkg }: { pkg: TourPackage }) {
+export function PackageCard({
+  pkg,
+  index,
+  setLightboxIndex,
+}: {
+  pkg: TourPackage
+  index?: number
+  setLightboxIndex?: (index: number) => void
+}) {
   const { language, t, localize } = useLanguage()
 
   return (
     <article className="group relative overflow-hidden rounded-[1.75rem] border border-sand bg-white shadow-soft transition-shadow duration-500 hover:shadow-lift">
-      <div className="relative bg-sand-light p-3 sm:p-4">
-        <img
-          alt={localize(pkg.image.alt)}
-          className="mx-auto h-auto max-h-[420px] w-full object-contain"
-          decoding="async"
-          loading="lazy"
-          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-          src={`/images/packages/${pkg.slug}-640.webp`}
-          srcSet={`/images/packages/${pkg.slug}-640.webp 640w, /images/packages/${pkg.slug}-1024.webp 1024w`}
-        />
-        <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full bg-ivory/95 px-4 py-2 text-xs font-semibold text-forest shadow-soft">
-          <Clock aria-hidden="true" size={15} />
-          {pkg.days} {pkg.days === 1 ? t.common.day : t.common.days}
+      {setLightboxIndex && index !== undefined ? (
+        <button
+          aria-label={`${t.gallery.lightbox.open}: ${localize(pkg.image.alt)}`}
+          className="group relative block w-full overflow-hidden bg-sand-light text-left"
+          onClick={() => setLightboxIndex(index)}
+          type="button"
+        >
+          <img
+            alt={localize(pkg.image.alt)}
+            className="aspect-square w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"
+            decoding="async"
+            loading="lazy"
+            sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+            src={`/images/packages/${pkg.slug}-640.webp`}
+            srcSet={`/images/packages/${pkg.slug}-640.webp 640w, /images/packages/${pkg.slug}-1024.webp 1024w`}
+          />
+          <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-ivory/95 px-4 py-2 text-xs font-semibold text-forest shadow-soft">
+            <Clock aria-hidden="true" size={15} />
+            {pkg.days} {pkg.days === 1 ? t.common.day : t.common.days}
+          </div>
+        </button>
+      ) : (
+        <div className="relative overflow-hidden bg-sand-light">
+          <img
+            alt={localize(pkg.image.alt)}
+            className="aspect-square w-full object-cover object-center"
+            decoding="async"
+            loading="lazy"
+            sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+            src={`/images/packages/${pkg.slug}-640.webp`}
+            srcSet={`/images/packages/${pkg.slug}-640.webp 640w, /images/packages/${pkg.slug}-1024.webp 1024w`}
+          />
+          <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-ivory/95 px-4 py-2 text-xs font-semibold text-forest shadow-soft">
+            <Clock aria-hidden="true" size={15} />
+            {pkg.days} {pkg.days === 1 ? t.common.day : t.common.days}
+          </div>
         </div>
-      </div>
+      )}
       <div className="flex flex-col gap-5 p-7 sm:p-8">
         <div>
           <p className="mb-2 text-xs font-bold tracking-[0.2em] text-clay uppercase">{pkg.code}</p>

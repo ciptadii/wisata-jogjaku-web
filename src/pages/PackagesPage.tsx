@@ -10,6 +10,8 @@ import { PackageCard } from '../components/cards/PackageCard'
 import { Reveal } from '../components/ui/Reveal'
 import { PriceNote } from '../components/ui/PriceNote'
 import { SEO } from '../components/ui/SEO'
+import { Lightbox } from '../components/ui/Lightbox'
+import type { GalleryItem } from '../types'
 
 const filters = [
   { value: 'all', label: 'all' },
@@ -22,6 +24,7 @@ export function PackagesPage() {
   const { language, t, localize } = useLanguage()
   const [activeFilter, setActiveFilter] = useState<'all' | '1' | '2' | '3'>('all')
   const [sort, setSort] = useState<'featured' | 'priceLowHigh' | 'priceHighLow'>('featured')
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   const filteredPackages = useMemo(() => {
     const filtered = activeFilter === 'all' ? [...tourPackages] : tourPackages.filter((pkg) => pkg.days === Number(activeFilter))
@@ -29,6 +32,16 @@ export function PackagesPage() {
     if (sort === 'priceHighLow') filtered.sort((a, b) => b.priceFrom - a.priceFrom)
     return filtered
   }, [activeFilter, sort])
+
+  const lightboxItems = useMemo<GalleryItem[]>(
+    () =>
+      filteredPackages.map((pkg) => ({
+        id: pkg.slug,
+        category: 'destination',
+        image: pkg.image,
+      })),
+    [filteredPackages],
+  )
 
   return (
     <>
@@ -75,7 +88,11 @@ export function PackagesPage() {
           <p className="mb-6 text-sm text-muted">{t.packages.index.resultCount.replace('{count}', String(filteredPackages.length))}</p>
           {filteredPackages.length ? (
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {filteredPackages.map((pkg, index) => <Reveal delay={index * 0.03} key={pkg.slug}><PackageCard pkg={pkg} /></Reveal>)}
+              {filteredPackages.map((pkg, index) => (
+                <Reveal delay={index * 0.03} key={pkg.slug}>
+                  <PackageCard index={index} pkg={pkg} setLightboxIndex={setLightboxIndex} />
+                </Reveal>
+              ))}
             </div>
           ) : (
             <div className="rounded-[2rem] border border-sand bg-white p-10 text-center">
@@ -95,10 +112,10 @@ export function PackagesPage() {
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {packageCategories.map((category) => (
               <Reveal className="flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-soft" key={category.slug}>
-                <div className="bg-sand-light p-3 sm:p-4">
+                <div className="overflow-hidden bg-sand-light">
                   <img
                     alt={localize(category.image.alt)}
-                    className="mx-auto h-auto max-h-[320px] w-full object-contain"
+                    className="aspect-square w-full object-cover object-center"
                     decoding="async"
                     loading="lazy"
                     sizes="(min-width: 1024px) 33vw, 100vw"
@@ -116,6 +133,18 @@ export function PackagesPage() {
           </div>
         </div>
       </section>
+      <Lightbox
+        index={lightboxIndex}
+        items={lightboxItems}
+        labels={{
+          close: t.gallery.lightbox.close,
+          previous: t.gallery.lightbox.previous,
+          next: t.gallery.lightbox.next,
+          dialog: t.gallery.lightbox.imageLabel,
+        }}
+        onChange={setLightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+      />
     </>
   )
 }

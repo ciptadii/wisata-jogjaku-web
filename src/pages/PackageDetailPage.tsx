@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ArrowLeft, Clock, Wallet } from 'lucide-react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -9,17 +10,22 @@ import { ButtonLink } from '../components/ui/Button'
 import { PageHero } from '../components/ui/PageHero'
 import { Reveal } from '../components/ui/Reveal'
 import { SEO } from '../components/ui/SEO'
+import { Lightbox } from '../components/ui/Lightbox'
+import type { GalleryItem } from '../types'
 
 export function PackageDetailPage() {
   const { language, t, localize } = useLanguage()
   const { slug } = useParams<{ slug: string }>()
   const pkg = tourPackages.find((item) => item.slug === slug)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   if (!pkg) {
     return <Navigate replace to={routePath('packages', language)} />
   }
 
   const related = tourPackages.filter((item) => item.days === pkg.days && item.slug !== pkg.slug).slice(0, 3)
+
+  const lightboxItems: GalleryItem[] = [{ id: pkg.slug, category: 'destination', image: pkg.image }]
 
   return (
     <>
@@ -42,15 +48,22 @@ export function PackageDetailPage() {
       <section className="section-space bg-ivory">
         <div className="site-container grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <Reveal>
-            <img
-              alt={localize(pkg.image.alt)}
-              className="h-auto max-h-[72vh] w-full rounded-[2rem] bg-sand-light object-contain p-3 shadow-soft sm:p-4"
-              decoding="async"
-              fetchPriority="high"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              src={`/images/packages/${pkg.slug}-640.webp`}
-              srcSet={`/images/packages/${pkg.slug}-640.webp 640w, /images/packages/${pkg.slug}-1024.webp 1024w`}
-            />
+            <button
+              aria-label={`${t.gallery.lightbox.open}: ${localize(pkg.image.alt)}`}
+              className="block w-full cursor-zoom-in overflow-hidden rounded-[2rem] text-left shadow-soft"
+              onClick={() => setLightboxIndex(0)}
+              type="button"
+            >
+              <img
+                alt={localize(pkg.image.alt)}
+                className="aspect-square w-full bg-sand-light object-cover object-center transition-transform duration-700 hover:scale-[1.01]"
+                decoding="async"
+                fetchPriority="high"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                src={`/images/packages/${pkg.slug}-640.webp`}
+                srcSet={`/images/packages/${pkg.slug}-640.webp 640w, /images/packages/${pkg.slug}-1024.webp 1024w`}
+              />
+            </button>
           </Reveal>
           <Reveal delay={0.08}>
             <div className="rounded-[2rem] border border-sand bg-white p-7 shadow-soft sm:p-9">
@@ -114,6 +127,18 @@ export function PackageDetailPage() {
           )}
         </div>
       </section>
+      <Lightbox
+        index={lightboxIndex}
+        items={lightboxItems}
+        labels={{
+          close: t.gallery.lightbox.close,
+          previous: t.gallery.lightbox.previous,
+          next: t.gallery.lightbox.next,
+          dialog: t.gallery.lightbox.imageLabel,
+        }}
+        onChange={setLightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+      />
     </>
   )
 }

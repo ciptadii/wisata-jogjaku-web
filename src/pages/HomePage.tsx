@@ -99,10 +99,10 @@ export function HomePage() {
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {packageCategories.map((category) => (
               <Reveal className="group relative overflow-hidden rounded-[2rem]" key={category.slug}>
-                <div className="flex aspect-[4/5] w-full items-start justify-center bg-sand-light p-3 transition-transform duration-700 group-hover:scale-[1.01] sm:p-4">
+                <div className="overflow-hidden bg-sand-light">
                   <img
                     alt={localize(category.image.alt)}
-                    className="h-full max-h-full w-full object-contain object-top"
+                    className="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
                     decoding="async"
                     loading="lazy"
                     sizes="(min-width: 768px) 33vw, 100vw"
@@ -110,7 +110,7 @@ export function HomePage() {
                     srcSet={`/images/packages/${category.slug}-640.webp 640w, /images/packages/${category.slug}-1024.webp 1024w`}
                   />
                 </div>
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-forest/95 via-forest/45 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/20 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-7 text-ivory">
                   <p className="text-sm text-ivory/70">{category.count}</p>
                   <h3 className="display-title mt-2 text-4xl">{localize(category.name)}</h3>
