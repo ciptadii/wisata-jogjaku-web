@@ -148,11 +148,25 @@ export const en: Dictionary = {
     },
   },
   about: {
-    meta: { title: 'About Wisata Jogjaku', description: 'Learn about tour packages and car rental with driver from Wisata Jogjaku.' },
+    meta: { title: 'About Wisata Jogjaku', description: 'Learn about Wisata Jogjaku, a provider of tour packages and car rental with driver in Yogyakarta.' },
     hero: {
       eyebrow: 'About us',
-      title: 'Weaving memories in Jogja with Wisata Jogjaku',
-      description: 'We provide tour packages and car rental with driver to help your journey in Yogyakarta.',
+      title: 'About Wisata Jogjaku',
+      description: 'A tour and car rental service with driver helping you explore Yogyakarta comfortably and with ease.',
+    },
+    content: {
+      sectionLabel: 'About Us',
+      title: 'About Wisata Jogjaku',
+      intro:
+        'Wisata Jogjaku is a tour and travel service in Yogyakarta. We have been operating for 5 years and continue to grow as your travel partner in Jogja.',
+      points: [
+        'Started from conversations with friends at a coffee shop in Yogyakarta, inspired by Jogja as a destination loved by local and international travelers.',
+        'Provides tour packages for different trip durations and travel needs.',
+        'Offers car rental with driver for comfortable, flexible travel.',
+        'Helps you plan and confirm trip details directly via WhatsApp.',
+      ],
+      closing:
+        'We are here to accompany your holiday and help you create memorable stories in the special city of Yogyakarta. Contact us and let us plan your journey together.',
     },
     services: {
       eyebrow: 'Our services',

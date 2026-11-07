@@ -148,12 +148,26 @@ export const id = {
   about: {
     meta: {
       title: 'Tentang Wisata Jogjaku',
-      description: 'Kenali layanan paket wisata dan rental mobil dengan pengemudi dari Wisata Jogjaku.',
+      description: 'Kenali Wisata Jogjaku, penyedia paket wisata dan rental mobil dengan pengemudi di Yogyakarta.',
     },
     hero: {
       eyebrow: 'Tentang kami',
-      title: 'Membatik Kenangan di Jogja bersama Wisata Jogjaku',
-      description: 'Kami menyediakan paket wisata dan rental mobil dengan pengemudi untuk membantu perjalanan Anda di Yogyakarta.',
+      title: 'Tentang Wisata Jogjaku',
+      description: 'Penyedia layanan paket wisata dan rental mobil dengan pengemudi untuk membantu Anda menjelajahi Yogyakarta dengan nyaman.',
+    },
+    content: {
+      sectionLabel: 'Tentang Kami',
+      title: 'Kenali Wisata Jogjaku',
+      intro:
+        'Wisata Jogjaku adalah penyedia layanan paket wisata dan rental mobil dengan pengemudi di Yogyakarta. Kami hadir untuk membantu Anda menjelajahi keindahan Jogja dengan perjalanan yang nyaman, fleksibel, dan mudah diatur.',
+      points: [
+        'Paket wisata Yogyakarta untuk berbagai durasi dan kebutuhan perjalanan',
+        'Rental mobil dengan pengemudi untuk penggunaan yang nyaman',
+        'Rencana perjalanan yang dapat disesuaikan dengan minat dan waktu Anda',
+        'Konfirmasi detail layanan dan ketersediaan langsung melalui WhatsApp',
+      ],
+      closing:
+        'Baik untuk liburan singkat, perjalanan keluarga, maupun kunjungan bersama teman, kami siap membantu Anda merencanakan pengalaman terbaik di Yogyakarta.',
     },
     services: {
       eyebrow: 'Layanan kami',
