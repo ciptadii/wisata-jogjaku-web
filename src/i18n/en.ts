@@ -157,16 +157,10 @@ export const en: Dictionary = {
     content: {
       sectionLabel: 'About Us',
       title: 'About Wisata Jogjaku',
-      intro:
+      paragraphs: [
         'Wisata Jogjaku is a tour and travel service in Yogyakarta. We have been operating for 5 years and continue to grow as your travel partner in Jogja.',
-      points: [
-        'Started from conversations with friends at a coffee shop in Yogyakarta, inspired by Jogja as a destination loved by local and international travelers.',
-        'Provides tour packages for different trip durations and travel needs.',
-        'Offers car rental with driver for comfortable, flexible travel.',
-        'Helps you plan and confirm trip details directly via WhatsApp.',
+        'Wisata Jogjaku began from conversations between me, the founder, and friends at a coffee shop in Jogja. Seeing that Yogyakarta is a destination visited by many local and international travelers, we were inspired to build a tourism transportation service. Since then, we have continued to move forward and grow alongside your holidays. So do not hesitate—contact us and let us create memorable stories together in the special city of Yogyakarta.',
       ],
-      closing:
-        'We are here to accompany your holiday and help you create memorable stories in the special city of Yogyakarta. Contact us and let us plan your journey together.',
     },
     services: {
       eyebrow: 'Our services',

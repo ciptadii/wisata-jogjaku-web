@@ -1,4 +1,3 @@
-import { CheckCircle2 } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 import { routePath } from '../data/navigation'
 import { contactLink } from '../utils/whatsapp'
@@ -25,16 +24,13 @@ export function AboutPage() {
             <div className="mx-auto max-w-4xl rounded-[2rem] border border-sand bg-white p-8 shadow-soft sm:p-10 lg:p-12">
               <p className="mb-5 text-xs font-bold tracking-[0.24em] text-clay uppercase">{t.about.content.sectionLabel}</p>
               <h2 className="display-title text-[clamp(2.25rem,4vw,3.75rem)] text-forest">{t.about.content.title}</h2>
-              <p className="mt-6 editorial-copy text-base text-muted sm:text-lg">{t.about.content.intro}</p>
-              <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-                {t.about.content.points.map((point) => (
-                  <li className="flex items-start gap-3 rounded-[1.25rem] bg-sand-light p-4" key={point}>
-                    <CheckCircle2 aria-hidden="true" className="mt-0.5 shrink-0 text-terracotta" size={20} />
-                    <span className="leading-relaxed text-charcoal">{point}</span>
-                  </li>
+              <div className="mt-6 space-y-5">
+                {t.about.content.paragraphs.map((paragraph) => (
+                  <p className="editorial-copy text-base leading-relaxed text-muted sm:text-lg" key={paragraph}>
+                    {paragraph}
+                  </p>
                 ))}
-              </ul>
-              <p className="mt-8 editorial-copy text-base text-muted sm:text-lg">{t.about.content.closing}</p>
+              </div>
               <div className="mt-10 flex flex-wrap gap-3">
                 <ButtonLink href={contactLink(language)} variant="whatsapp">
                   {t.about.values.cta}

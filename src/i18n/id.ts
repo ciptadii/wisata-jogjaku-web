@@ -157,17 +157,11 @@ export const id = {
     },
     content: {
       sectionLabel: 'Tentang Kami',
-      title: 'Kenali Wisata Jogjaku',
-      intro:
-        'Wisata Jogjaku adalah penyedia layanan paket wisata dan rental mobil dengan pengemudi di Yogyakarta. Kami hadir untuk membantu Anda menjelajahi keindahan Jogja dengan perjalanan yang nyaman, fleksibel, dan mudah diatur.',
-      points: [
-        'Paket wisata Yogyakarta untuk berbagai durasi dan kebutuhan perjalanan',
-        'Rental mobil dengan pengemudi untuk penggunaan yang nyaman',
-        'Rencana perjalanan yang dapat disesuaikan dengan minat dan waktu Anda',
-        'Konfirmasi detail layanan dan ketersediaan langsung melalui WhatsApp',
+      title: 'Tentang Wisata Jogjaku',
+      paragraphs: [
+        'Wisata Jogjaku, merupakan salah satu jasa tour travel di Yogyakarta. Kami sudah berdiri selama 5 Tahun dan terus berkembang bersama untuk menjadi jasa perjalanan wisata anda di Jogja.',
+        'Awal mula berdirinya Wisata Jogjaku dimulai dari obrolan-obrolan saya sebagai founder bersama teman-teman di salah satu warung kopi yang ada di jogja. Melihat Jogja adalah salah satu destinasi wisata yang banyak dikunjungi oleh turis baik lokal maupun manca negara, tercetuslah sebuah pemikiran untuk membangun sebuah jasa transportasi wisata. Sejak saat itu kami memutuskan untuk terus maju dan terus berkembang membersamai liburan anda, jadi jangan ragu lagi. Hubungi kami dan mari merajut cerita bersama di Jogjaku yang istimewa…',
       ],
-      closing:
-        'Baik untuk liburan singkat, perjalanan keluarga, maupun kunjungan bersama teman, kami siap membantu Anda merencanakan pengalaman terbaik di Yogyakarta.',
     },
     services: {
       eyebrow: 'Layanan kami',
