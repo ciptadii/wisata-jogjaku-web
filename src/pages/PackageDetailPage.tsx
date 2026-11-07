@@ -44,7 +44,7 @@ export function PackageDetailPage() {
           <Reveal>
             <img
               alt={localize(pkg.image.alt)}
-              className="aspect-square w-full object-cover object-top rounded-[2rem] shadow-soft"
+              className="h-auto max-h-[72vh] w-full rounded-[2rem] bg-sand-light object-contain p-3 shadow-soft sm:p-4"
               decoding="async"
               fetchPriority="high"
               sizes="(min-width: 1024px) 45vw, 100vw"

@@ -95,15 +95,17 @@ export function PackagesPage() {
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {packageCategories.map((category) => (
               <Reveal className="flex flex-col overflow-hidden rounded-[2rem] bg-white shadow-soft" key={category.slug}>
-                <img
-                  alt={localize(category.image.alt)}
-                  className="aspect-[16/10] w-full object-cover object-top"
-                  decoding="async"
-                  loading="lazy"
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  src={`/images/packages/${category.slug}-640.webp`}
-                  srcSet={`/images/packages/${category.slug}-640.webp 640w, /images/packages/${category.slug}-1024.webp 1024w`}
-                />
+                <div className="bg-sand-light p-3 sm:p-4">
+                  <img
+                    alt={localize(category.image.alt)}
+                    className="mx-auto h-auto max-h-[320px] w-full object-contain"
+                    decoding="async"
+                    loading="lazy"
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    src={`/images/packages/${category.slug}-640.webp`}
+                    srcSet={`/images/packages/${category.slug}-640.webp 640w, /images/packages/${category.slug}-1024.webp 1024w`}
+                  />
+                </div>
                 <div className="flex flex-1 flex-col gap-4 p-7">
                   <h3 className="display-title text-3xl text-forest">{localize(category.name)}</h3>
                   <p className="text-muted">{formatIDR(category.priceFrom, language)} {t.common.perCar}</p>

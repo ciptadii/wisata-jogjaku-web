@@ -11,17 +11,17 @@ export function PackageCard({ pkg }: { pkg: TourPackage }) {
 
   return (
     <article className="group relative overflow-hidden rounded-[1.75rem] border border-sand bg-white shadow-soft transition-shadow duration-500 hover:shadow-lift">
-      <div className="relative aspect-[16/10] overflow-hidden bg-forest-deep">
+      <div className="relative bg-sand-light p-3 sm:p-4">
         <img
           alt={localize(pkg.image.alt)}
-          className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+          className="mx-auto h-auto max-h-[420px] w-full object-contain"
           decoding="async"
           loading="lazy"
           sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
           src={`/images/packages/${pkg.slug}-640.webp`}
           srcSet={`/images/packages/${pkg.slug}-640.webp 640w, /images/packages/${pkg.slug}-1024.webp 1024w`}
         />
-        <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-ivory/90 px-4 py-2 text-xs font-semibold text-forest">
+        <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full bg-ivory/95 px-4 py-2 text-xs font-semibold text-forest shadow-soft">
           <Clock aria-hidden="true" size={15} />
           {pkg.days} {pkg.days === 1 ? t.common.day : t.common.days}
         </div>
